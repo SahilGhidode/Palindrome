@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: rgb(68, 6, 110);
+
+        }
+
+        #div {
+            border-radius: 10px;
+            background-color: rgb(230, 203, 203);
+            padding-bottom: 15px;
+            padding: 10px;
+            margin: auto;
+            width: 60%;
+        }
+        #text{
+            border-radius: 15px;
+            padding: 10px;
+            margin: auto;
+            width: 60%;
+            background-color: green;
+            text-decoration-thickness:unset;
+        }
+        #outer{
+            padding: 0px;
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+    <div>
+        <h1>Project</h1>
+        <h2>Is it a Palindrome</h2>
+        <div id="outer">
+            <div id="div">
+                <p>Enter in text to check for a palindrome :: </p>
+                <input id="text-input" type="text">
+                <button id="check-btn">check</button>
+                <br>
+                <div id="result"></div>
+
+            </div>
+            <br><br>
+            <div id="text">
+                💡 A palindrome is a word or sentence that's spelled the same way both forward and backward, ignoring
+                punctuation, case, and spacing.
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
+<script>
+    document.querySelector("button").addEventListener("click", get)
+    function get() {
+        if (document.querySelector("#text-input").value == "") {
+            alert("Please input a value.");
+            return;
+
+        }
+        let s = document.querySelector("#text-input").value;
+        // console.log(s);
+        let cleaned = s.replace(/[^a-z0-9]/gi, '').toLowerCase();
+        // console.log(cleaned)
+        let s1 = cleaned.split("").reverse().join("");
+        // console.log(s1);
+        let result = document.querySelector("#result")
+        if (cleaned == s1) {
+            // console.log("hii")
+            result.innerText = `${s} is a plindrome`
+        }
+        else result.innerText = `${s} is not a plindrome`
+        document.querySelector("#text-input").value = ""
+    }
+</script>
